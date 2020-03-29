@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 function vt_test_submit()
 {
 $options_r = get_option('virustracker_plugin_options');
@@ -13,8 +15,9 @@ $options_r = get_option('virustracker_plugin_options');
             $body = array(
                 "certification" => $certification
             );    
-          
+          //CurlPost("https://virustracker.ch/wp-content/plugins/virustracker/api-test.php",$body);
           CurlPost($options_r['server_url'],$body);
+          //echo json_encode($body);die;
     }
 }
 add_shortcode( 'vt_test_submit', 'vt_test_submit' );
@@ -22,8 +25,7 @@ add_shortcode( 'vt_test_submit', 'vt_test_submit' );
 
 function CurlPost($sURL,$sMessage = "")
 {
-    echo $sURL;
-    print_r( $sMessage );
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -32,6 +34,7 @@ function CurlPost($sURL,$sMessage = "")
     curl_setopt ($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($sMessage));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
     $sResult = curl_exec($ch);
 
@@ -42,7 +45,7 @@ function CurlPost($sURL,$sMessage = "")
     } else 
     {
         // Kein Fehler, Ergebnis zurückliefern:
-       
+        print_r($sResult);die;
         curl_close($ch);
 
         return $sResult;
