@@ -1,23 +1,20 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+
 function vt_test_submit()
 {
 $options_r = get_option('virustracker_plugin_options');
-//print_r($options_r);
+
     if(get_user_role() === "administrator" || get_user_role() === "verificators")  {
-          // Beispielaufruf mit POST-Variablen:
+            $attestestion = hash_hmac("sha256", $_POST['vt_verification'].$_POST['vt_result'], $options_r['api_key'], true);
             $certification= array(
-                "attestation_hash_prefix" => "12345678==",
-                "result" => "NEGATIVE",
-                "attestation" => "baffbaff=="
+                "attestation_hash_prefix" => $_POST['vt_verification'],
+                "result" => $_POST['vt_result'],
+                "attestation" => base64_encode($attestestion)
             );
             $body = array(
                 "certification" => $certification
-            );    
-          //CurlPost("https://virustracker.ch/wp-content/plugins/virustracker/api-test.php",$body);
-          CurlPost($options_r['server_url'],$body);
-          //echo json_encode($body);die;
+            );  ;
+          echo CurlPost($options_r['server_url'],$body);
     }
 }
 add_shortcode( 'vt_test_submit', 'vt_test_submit' );
@@ -45,7 +42,7 @@ function CurlPost($sURL,$sMessage = "")
     } else 
     {
         // Kein Fehler, Ergebnis zurückliefern:
-        print_r($sResult);die;
+        //print_r($sResult);
         curl_close($ch);
 
         return $sResult;
