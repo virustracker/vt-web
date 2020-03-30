@@ -4,7 +4,9 @@ function vt_test_submit()
 {
 $options_r = get_option('virustracker_plugin_options');
 
-    if(get_user_role() === "administrator" || get_user_role() === "verificators")  {
+    if(get_user_role() === "administrator" || get_user_role() === "um_verificators")  {
+    //print_r($_POST);die;
+            if(strlen($_POST['vt_verification'])<=0)   {  ?><meta http-equiv="refresh" content="0;url=/?page_id=325&error=empty"><?php die; }
             $attestestion = hash_hmac("sha256", $_POST['vt_verification'].$_POST['vt_result'], $options_r['api_key'], true);
             $certification= array(
                 "attestation_hash_prefix" => $_POST['vt_verification'],
@@ -14,7 +16,11 @@ $options_r = get_option('virustracker_plugin_options');
             $body = array(
                 "certification" => $certification
             );  ;
-          echo CurlPost($options_r['server_url'],$body);
+          $result= CurlPost($options_r['server_url'],$body);
+          //echo $result;die;
+          if($result!=200){
+               ?><meta http-equiv="refresh" content="0;url=/?page_id=325&error=server"><?php
+          }
     }
 }
 add_shortcode( 'vt_test_submit', 'vt_test_submit' );
@@ -42,10 +48,12 @@ function CurlPost($sURL,$sMessage = "")
     } else 
     {
         // Kein Fehler, Ergebnis zurückliefern:
-        //print_r($sResult);
+        $result=curl_getinfo($ch)['http_code'];
+
+        //print_r(curl_getinfo ($ch));     die;
         curl_close($ch);
 
-        return $sResult;
+        return $result;
     }    
 }
 
