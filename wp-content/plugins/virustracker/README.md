@@ -15,3 +15,7 @@ Just for no one abusing directory listings
 Renders the plugin options in the wordpress backend (API URL, API Key, Page ID of the page submitting the results)  
 **includes/[submit-test.php](https://github.com/virustracker/vt-web/blob/master/wp-content/plugins/virustracker/includes/submit-test.php "submit-test.php")**  
 The magic happens here. API Call is made.  
+
+## ToDo
+- Error handling for cURL results
+- Test if it really works ;-)
