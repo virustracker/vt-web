@@ -17,5 +17,4 @@ Renders the plugin options in the wordpress backend (API URL, API Key, Page ID o
 The magic happens here. API Call is made.  
 
 ## ToDo
-- Error handling for cURL results
-- Test if it really works ;-)
+- Implementing Lab IDs and Lab Keys
