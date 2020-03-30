@@ -127,11 +127,15 @@ html {
   font-family: Poppins;
   src: url(/wp-includes/fonts/Poppins-Regular.ttf);
 }
+@font-face {
+  font-family: PoppinsLight;
+  src: url(/wp-includes/fonts/Poppins-Light.ttf);
+}
 body {
 	background: #f5efe0;
 	box-sizing: border-box;
 	color: #000;
-	font-family: Poppins, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: PoppinsLight, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 1.8rem;
 	letter-spacing: -0.015em;
 	text-align: left;
@@ -140,7 +144,7 @@ body {
 @supports ( font-variation-settings: normal ) {
 
 	body {
-		font-family: Poppins, "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: PoppinsLight, "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
@@ -3529,14 +3533,14 @@ figure.wp-block-table.is-style-stripes {
 .entry-content ul,
 .entry-content dl,
 .entry-content dt {
-	font-family: Poppins, "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: PoppinsLight, "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	letter-spacing: normal;
 }
 
 .entry-content cite,
 .entry-content figcaption,
 .entry-content .wp-caption-text {
-	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: PoppinsLight,-apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
@@ -3544,7 +3548,7 @@ figure.wp-block-table.is-style-stripes {
 	.entry-content cite,
 	.entry-content figcaption,
 	.entry-content .wp-caption-text {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: PoppinsLight,"Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
@@ -4118,7 +4122,7 @@ div.comment:first-of-type {
 .widget_text dl,
 .widget_text dt,
 .widget-content .rssSummary {
-	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+	font-family: PoppinsLight,sans-serif,NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
 	letter-spacing: normal;
 }
 

@@ -19,7 +19,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+<link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
+		<title>virus tracker | spread the app - not the virus!</title>
 		<?php wp_head(); ?>
 
 	</head>
@@ -33,7 +34,9 @@
 		<header id="site-header" class="header-footer-group" role="banner">
 
 			<div class="header-inner section-inner">
-
+<a href="/"><img id="svg-title" src="/wp-content/uploads/2020/03/header_title.svg" /></a>
+				<img id="svg-header" src="/wp-content/uploads/2020/03/header_phone.svg" />
+				<div style="clear:both" />
 				<div class="header-titles-wrapper">
 
 					<?php
